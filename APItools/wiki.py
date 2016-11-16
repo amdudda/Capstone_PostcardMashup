@@ -11,11 +11,12 @@ class wikipedia_API:
         result = wikipedia.summary(search_term, sentences=self.sentence)
         return result
 
-
-# re =wikipedia.page("Thanksgiving")
-# rs = wikipedia.search("thanksgiving")
-# th = wikipedia.summary('thanksgiving', sentences=3)
-# print(th)
+# debugging
+if __name__ == '__main__':
+    re = wikipedia.page("Thanksgiving")
+    rs = wikipedia.search("thanksgiving")
+    th = wikipedia.summary('thanksgiving', sentences=3)
+    print(th)
 
 
 

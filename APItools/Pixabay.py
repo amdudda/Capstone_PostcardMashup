@@ -33,7 +33,7 @@ def get_image_url(search_for="Thanksgiving"):
         # if no results found, return None so code can inspect for that.
         return None
 
-
+# debugging
 if (__name__ == "__main__"):
     img_url = get_image_url()
     print(img_url)
