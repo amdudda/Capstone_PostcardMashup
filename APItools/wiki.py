@@ -1,4 +1,6 @@
 from wikipedia import wikipedia
+from contextlib import suppress
+import warnings
 import requests
 
 class wikipedia_API:
@@ -13,10 +15,21 @@ class wikipedia_API:
 
 # debugging
 if __name__ == '__main__':
-    re = wikipedia.page("Thanksgiving")
-    rs = wikipedia.search("thanksgiving")
-    th = wikipedia.summary('thanksgiving', sentences=3)
-    print(th)
+    # re = wikipedia.page("Thanksgiving")
+    # rs = wikipedia.search("thanksgiving")
+    th = None
+
+    # this isgnores all warnings raised - this is not without risks - see https://docs.python.org/2/library/warnings.html
+    warnings.filterwarnings('ignore')
+    try:
+        # with suppress(UserWarning):
+        th = wikipedia.summary('thing', sentences=3)
+        # print(th)
+    except wikipedia.DisambiguationError as de:
+        th = ("A disambiguation page was reached, with the following choices:\n" + str(de.options))
+    finally:
+        print(th)
+
 
 
 
