@@ -3,3 +3,6 @@ APItools/APIkeys.py
 APItools/testing.py
 testing.py
 .idea/
+__pycache__
+*.pyc
+venv/
