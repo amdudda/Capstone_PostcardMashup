@@ -8,22 +8,40 @@ class wikipedia_API:
 
     def __init__(self):
         self.sentence = 1
+        self.recursion_count=0
 #todo you need to figure out how to deal with less specific search term
     #web scrapes wikidedia page for search term then get one sentence of summary
     def get_wiki_snippet(self, search_term):
+
         #https://docs.python.org/3/library/warnings.html#temporarily-suppressing-warnings the link to chatch warning
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
-            try:
-                result = wikipedia.summary(search_term, sentences=self.sentence)
-            except wikipedia.DisambiguationError as e:
+            while True:
+                try:
+                    result = wikipedia.summary(search_term, sentences=self.sentence)
+                    break
+                except wikipedia.DisambiguationError as e:
 
-                the = random.choice(e.options)
-                result = wikipedia.summary(the, sentences=self.sentence)
+                    the = random.choice(e.options)
+                    result = self.recusive_error(the)
+                except wikipedia.PageError as err:
+                    result = self.recusive_error(search_term)
+        #self.recursion_count=0
+        return result
+    def recusive_error(self, search_term):
+        self.recursion_count+=1
+        print('recursion #'+ str(self.recursion_count))
+        try:
+            result = wikipedia.summary(search_term, sentences=self.sentence)
 
+        except wikipedia.DisambiguationError as e:
+
+            the = random.choice(e.options)
+            result = self.recusive_error(search_term)
+        except wikipedia.PageError as err:
+            result = self.recusive_error(search_term)
 
         return result
-
 
 # debugging
 # if __name__ == '__main__':
