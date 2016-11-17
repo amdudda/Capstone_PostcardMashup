@@ -5,6 +5,7 @@ import requests # http://docs.python-requests.org/en/master/
 import json
 import random
 
+
 def get_image_url(search_for="Thanksgiving", pixabaykey=None):
     '''
     Requests a bunch of images from Pixabay API and picks a random image from the results.
@@ -20,7 +21,7 @@ def get_image_url(search_for="Thanksgiving", pixabaykey=None):
     }
 
     # request data from Pixabay API
-    response = requests.get(search_url,params=apiparms).json()
+    response = requests.get(search_url, params=apiparms).json()
     hits = response['hits']
     hitcount = len(hits)
     if hitcount > 0 :
@@ -34,6 +35,6 @@ def get_image_url(search_for="Thanksgiving", pixabaykey=None):
         return None
 
 # debugging
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     img_url = get_image_url()
     print(img_url)
