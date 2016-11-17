@@ -5,7 +5,7 @@ import requests # http://docs.python-requests.org/en/master/
 import json
 import random
 
-def get_image_url(search_for="Thanksgiving"):
+def get_image_url(search_for="Thanksgiving", pixabaykey=None):
     '''
     Requests a bunch of images from Pixabay API and picks a random image from the results.
     :param search_for:
