@@ -1,2 +1,5 @@
-testing.py
 # Created by .ignore support plugin (hsz.mobi)
+APItools/APIkeys.py
+APItools/testing.py
+testing.py
+.idea/
