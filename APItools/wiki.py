@@ -35,23 +35,24 @@ class wikipedia_API:
                     result = "No matches found for " + str(search_term)
                     break
                 finally:
-                    self.snippet = result
+
+                    return result
         #self.recursion_count=0
         # return result
-    def recusive_error(self, search_term):
-        self.recursion_count+=1
-        print('recursion #'+ str(self.recursion_count))
-        try:
-            result = wikipedia.summary(search_term, sentences=self.sentence)
-
-        except wikipedia.DisambiguationError as e:
-            print(search_term)
-            the = random.choice(e.options)
-            result = self.recusive_error(the)
-        except wikipedia.PageError as err:
-            result = self.recusive_error(search_term)
-
-        return result
+    # def recusive_error(self, search_term):
+    #     self.recursion_count+=1
+    #     print('recursion #'+ str(self.recursion_count))
+    #     try:
+    #         result = wikipedia.summary(search_term, sentences=self.sentence)
+    #
+    #     except wikipedia.DisambiguationError as e:
+    #         print(search_term)
+    #         the = random.choice(e.options)
+    #         result = self.recusive_error(the)
+    #     except wikipedia.PageError as err:
+    #         result = self.recusive_error(search_term)
+    #
+    #     return result
 
 # debugging
 if __name__ == '__main__':
