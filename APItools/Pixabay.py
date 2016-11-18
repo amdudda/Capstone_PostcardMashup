@@ -13,8 +13,8 @@ def get_image_url(search_for="Thanksgiving", pixabaykey=None):
     :param search_for:
     :return: url as string if successful, None if no results found
     '''
-
-    from APItools.APIkeys import pixabaykey # NB: APIkeys is not shared with repo to protect key integrity
+    if not pixabaykey:
+        from APItools.APIkeys import pixabaykey # NB: APIkeys is not shared with repo to protect key integrity
     search_url = "https://pixabay.com/api"
     apiparms = {
         'key': pixabaykey,
