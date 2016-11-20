@@ -5,7 +5,7 @@ import requests # http://docs.python-requests.org/en/master/
 import json
 import random
 import urllib.request, datetime
-
+from os.path import sep
 
 def get_image_url(search_for="Thanksgiving", pixabaykey=None):
     '''
@@ -49,7 +49,8 @@ def save_image(imageurl):
     filename = ts + "_" + imageurl[startfrom:]
     print(filename)
 
-    filepath = "images/" + filename
+    # use os.path.sep to insert the appropriate directory delimiter between directory and filename
+    filepath = "images" + sep + filename
 
     try:
         urllib.request.urlretrieve(imageurl, filepath)
