@@ -6,15 +6,15 @@ import requests
 
 
 # class created by Marian
-class wikipedia_API:
+class wikipedia_API():
     def __init__(self):
         self.sentence = 1
         self.recursion_count = 0
         self.snippet = ""
     # todo you need to figure out how to deal with less specific search term
     # web scrapes wikipedia page for search term then get one sentence of summary
-
-    def get_wiki_snippet(self, search_term):
+    @staticmethod
+    def get_wiki_snippet(search_term):
 
         # https://docs.python.org/3/library/warnings.html#temporarily-suppressing-warnings the link to chatch warning
         with warnings.catch_warnings():
@@ -37,7 +37,7 @@ class wikipedia_API:
 
 # debugging
 if __name__ == '__main__':
-    search_term = "summer"
+    search_term = "Thanksgiving"
     disambiguation_error_search = "thing"
     page_error_search = "qroiew af 8phqifnea f "
     terms = [search_term, disambiguation_error_search,page_error_search]
