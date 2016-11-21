@@ -6,3 +6,4 @@ testing.py
 __pycache__
 *.pyc
 venv/
+testwiki.py
