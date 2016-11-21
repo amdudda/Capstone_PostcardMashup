@@ -1,6 +1,6 @@
-from . Pixabay import *
-from . tweet import *
-from . wiki import wikipedia_API as wikiapi
+from APItools.Pixabay import *
+from APItools.tweet import *
+from APItools.wiki import wikipedia_API as wikiapi
 import threading
 from queue import Queue
 import time

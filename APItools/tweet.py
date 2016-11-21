@@ -2,17 +2,16 @@ import tweepy
 from tweepy import OAuthHandler
 from tweepy import Stream
 from tweepy.streaming import StreamListener, json
+from APItools.APIkeys import twitter_keys
 
 
-
-auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+auth = tweepy.OAuthHandler(twitter_keys['CONSUMER_KEY'], twitter_keys['CONSUMER_SECRET'])
+auth.set_access_token(twitter_keys['ACCESS_TOKEN'], twitter_keys['ACCESS_TOKEN_SECRET'])
 
 api = tweepy.API(auth)
 
 
 results = api.search(q="Thanksgiving", count=1)
-
 
 for result in results:
     print("\n ** Result: "+result.text)
