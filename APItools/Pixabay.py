@@ -2,19 +2,18 @@
 This will eventually hold code that returns a url to an image on Pixabay.
 '''
 import requests # http://docs.python-requests.org/en/master/
-import json
 import random
 import urllib.request, datetime
 from os.path import sep
 
-def get_image_url(search_for="Thanksgiving", pixabaykey=None):
+def get_image_url(search_for="Thanksgiving", pixabaykey='2247975-820bb8e9b515dccb3f71e3086'):
     '''
     Requests a bunch of images from Pixabay API and picks a random image from the results.
     :param search_for:
     :return: url as string if successful, None if no results found
     '''
-    if not pixabaykey:
-        from APItools.APIkeys import pixabaykey # NB: APIkeys is not shared with repo to protect key integrity
+    # if not pixabaykey:
+    #     from APItools.APIkeys import pixabaykey # NB: APIkeys is not shared with repo to protect key integrity
     search_url = "https://pixabay.com/api"
     apiparms = {
         'key': pixabaykey,
@@ -27,13 +26,14 @@ def get_image_url(search_for="Thanksgiving", pixabaykey=None):
     hitcount = len(hits)
     if hitcount > 0 :
         # if data is returned, pick a random hit and return the image url found in the selected hit
-        selected_index = random.randint(0,hitcount)
+        selected_index = random.randint(0, hitcount)
         # print(selected_index)
         # print(hits[selected_index]['previewURL'])
         return hits[selected_index]['previewURL']
     else:
         # if no results found, return None so code can inspect for that.
         return None
+
 
 def save_image(imageurl):
     ''' takes a url as an argument and tries to save the image to a directory'''
@@ -55,7 +55,7 @@ def save_image(imageurl):
     try:
         urllib.request.urlretrieve(imageurl, filepath)
         return True
-    except (urllib.error.HTTPError) as exc:
+    except urllib.error.HTTPError as exc:
         print("An error occurred: " + str(exc))
         return False
 
