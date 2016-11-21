@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>PostCard-MashUp</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/todo.css' %}">
+    </head>
+
+
+    <body class="align">
+      <div class="container">
+      <br />
+      <form class="search-keyword" action="/" method="post">
+        {% csrf_token %}
+      <label>Enter search keyword:</label><br />
+      <input type="text" class="tname" name="name" placeholder="search_keyword"><br /> <br />
+
+      <p></p>
+
+      <p>{{ search.text }}</p>
+          <button type="submit" value=" " class="button"> Search </button>
+
+          <br />
+      <hr />
+
+        </form>
+      </div>
+    </body>
+</html>
