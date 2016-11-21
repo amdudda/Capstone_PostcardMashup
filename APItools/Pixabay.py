@@ -21,9 +21,9 @@ def get_image_url(search_for="Thanksgiving", pixabaykey=None):
     }
 
     # request data from Pixabay API
-    response = requests.get(search_url, params=apiparms) #.json()
-    print(response.text)
-    response = response.json()
+    response = requests.get(search_url, params=apiparms).json()
+    # print(response.text)
+    # response = response.json()
     hits = response['hits']
     hitcount = len(hits)
     if hitcount > 0 :
