@@ -4,18 +4,21 @@ from tweepy import Stream
 from tweepy.streaming import StreamListener, json
 from APItools.APIkeys import twitter_keys
 
+def get_twitter(search_for="Thanksgiving"):
+    auth = tweepy.OAuthHandler(twitter_keys['CONSUMER_KEY'], twitter_keys['CONSUMER_SECRET'])
+    auth.set_access_token(twitter_keys['ACCESS_TOKEN'], twitter_keys['ACCESS_TOKEN_SECRET'])
 
-auth = tweepy.OAuthHandler(twitter_keys['CONSUMER_KEY'], twitter_keys['CONSUMER_SECRET'])
-auth.set_access_token(twitter_keys['ACCESS_TOKEN'], twitter_keys['ACCESS_TOKEN_SECRET'])
-
-api = tweepy.API(auth)
+    api = tweepy.API(auth)
 
 
-results = api.search(q="Thanksgiving", count=1)
+    results = api.search(q="Thanksgiving", count=1)
 
-for result in results:
-    print("\n ** Result: "+result.text)
+    # for result in results:
+    #     print("\n ** Result: "+result.text)
 
+    return results[0].text
+
+# print(get_twitter())
 
 # # Get data from twitter api
 # class get_twitter(StreamListener):

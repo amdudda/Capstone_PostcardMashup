@@ -29,7 +29,10 @@ def get_wiki_content():
 
 def get_tweet():
     # need twitter data
-    pass
+    # pass
+    tweet = get_twitter(search)
+    with print_lock:
+        print("I am the tweet: \n", tweet)
 
 
 def threader():
@@ -57,6 +60,7 @@ for x in range(5):
     # begins, must come after daemon definition
     image.start()
     wiki.start()
+    tweet.start()
 
 start = time.time()
 # list of random search string- can change it as per your choice
