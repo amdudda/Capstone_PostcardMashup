@@ -15,25 +15,31 @@ class wikipedia_API():
     # web scrapes wikipedia page for search term then get one sentence of summary
     @staticmethod
     def get_wiki_snippet(search_term):
-
+        result=""
         # https://docs.python.org/3/library/warnings.html#temporarily-suppressing-warnings the link to chatch warning
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
             while True:
                 try:
                     result = wikipedia.summary(search_term)
-                    print(result)
-                    return
+                    # print(result)
+                    break
                 except wikipedia.DisambiguationError as e:
-                    print(e.options)
+                    # print(e.options)
+                    new_article = random.choice(e.options)
+                    result = wikipedia.summary(new_article)
+                    # print(result)
+                    break
                 except wikipedia.PageError as err:
                     result = "No matches found for " + str(search_term)
-                    print(result)
-                    print("Here is the error", err)
+                    # print(result)
+                    # print("Here is the error", err)
                     break
-                finally:
-                    break
+                # finally:
+                    # return result
+                    # break
 
+        return result
 
 # debugging
 if __name__ == '__main__':
@@ -44,8 +50,8 @@ if __name__ == '__main__':
     for srch in terms:
         print("searching for '" + srch + "'...")
         w = wikipedia_API()
-        w.get_wiki_snippet(srch)
-        print(w.snippet)
+        snip = w.get_wiki_snippet(srch)
+        print(snip)
 
 
 
