@@ -1,7 +1,9 @@
 from django.db import models
 import datetime
 
+
 # Create your models here.
+
 
 class API_model(models.Model):
     sentence = models.CharField(max_length=300, null=False)

@@ -1,7 +1,7 @@
 import tweepy
 from tweepy import OAuthHandler
-# from tweepy import streaming
-# from tweepy.streaming import StreamListener, json
+from tweepy import Stream
+from tweepy.streaming import StreamListener, json
 from APItools.APIkeys import twitter_keys
 
 def get_twitter(search_for="Thanksgiving"):
@@ -11,16 +11,15 @@ def get_twitter(search_for="Thanksgiving"):
     api = tweepy.API(auth)
 
 
-    results = api.search(q=search_for, count=1)
-
-
+    results = api.search(q="Thanksgiving", count=1)
 
     # for result in results:
     #     print("\n ** Result: "+result.text)
 
     return results[0].text
 
-print(get_twitter())
+# print(get_twitter())
+
 # # Get data from twitter api
 # class get_twitter(StreamListener):
 #
