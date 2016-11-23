@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from . models import API_model as mod
 from APItools.API_Manager import get_image, get_tweet, get_wiki_content
+import sys, os
 # Create your views here.
+# sys.path.append(r"/Users/chitrakakkar/PycharmProjects/Capstone_FinalProject")
+# os.environ['PATH'] = (r" /Users/chitrakakkar/PycharmProjects/Capstone_FinalProject;"
+#                       + os.environ['PATH'])
 
 
 def index(request):

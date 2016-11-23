@@ -39,7 +39,7 @@ if __name__ == '__main__':
     search_term = "Thanksgiving"
     disambiguation_error_search = "thing"
     page_error_search = "qroiew af 8phqifnea f "
-    terms = [search_term, disambiguation_error_search,page_error_search]
+    terms = [search_term, disambiguation_error_search, page_error_search]
     for srch in terms:
         print("searching for '" + srch + "'...")
         w = wikipedia_API()
