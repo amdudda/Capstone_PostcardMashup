@@ -4,11 +4,11 @@ import datetime
 
 # Create your models here.
 
-
 class API_model(models.Model):
-    sentence = models.CharField(max_length=300, null=False)
-    search_term = models.CharField(max_length=100, null=False, unique=True)
-    saved_on = models.DateTimeField(null=False, default=datetime.datetime)
+    image = models.CharField(max_length=300, null=False)
+    wiki_sentence = models.CharField(max_length=100, null=False, unique=True)
+    tweet_text = models.CharField(max_length=100, null=False, unique=True)
+    Saved_n = models.DateTimeField(null=False, default=datetime.datetime)
 
 
 

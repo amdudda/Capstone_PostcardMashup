@@ -14,11 +14,9 @@
       <form class="search-keyword" action="/" method="post">
         {% csrf_token %}
       <label>Enter search keyword:</label><br />
-      <input type="text" class="tname" name="name" placeholder="search_keyword"><br /> <br />
+      <input type="text" class="tname" name="search" placeholder="search_keyword"><br /> <br />
 
       <p></p>
-
-      <p>{{ search.text }}</p>
           <button type="submit" value=" " class="button"> Search </button>
 
           <br />

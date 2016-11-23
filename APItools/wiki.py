@@ -6,6 +6,7 @@ import requests
 
 
 # class created by Marian
+
 class wikipedia_API():
     def __init__(self):
         self.sentence = 1
@@ -22,22 +23,14 @@ class wikipedia_API():
             while True:
                 try:
                     result = wikipedia.summary(search_term)
-                    # print(result)
                     break
                 except wikipedia.DisambiguationError as e:
-                    # print(e.options)
                     new_article = random.choice(e.options)
                     result = wikipedia.summary(new_article)
-                    # print(result)
                     break
                 except wikipedia.PageError as err:
                     result = "No matches found for " + str(search_term)
-                    # print(result)
-                    # print("Here is the error", err)
                     break
-                # finally:
-                    # return result
-                    # break
 
         return result
 
