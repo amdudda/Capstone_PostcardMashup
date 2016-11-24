@@ -21,21 +21,26 @@ def get_image_url(search, pixabaykey=None):
     }
 
     # request data from Pixabay API
-    response = requests.get(search_url, params=apiparms).json()
-    # print(response.text)
-    # response = response.json()
-    hits = response['hits']
-    hitcount = len(hits)
-    if hitcount > 0 :
-        # if data is returned, pick a random hit and return the image url found in the selected hit
-        selected_index = random.randint(0, hitcount)
-        # print(selected_index)
-        # print(hits[selected_index]['previewURL'])
-        return hits[selected_index]['previewURL']
+    resp = requests.get(search_url, params=apiparms)
+    status = resp.status_code
+    if status == 200:
+        response = resp.json()
+        # print(response.text)
+        # response = response.json()
+        hits = response['hits']
+        hitcount = len(hits)
+        if hitcount > 0 :
+            # if data is returned, pick a random hit and return the image url found in the selected hit
+            selected_index = random.randint(0, hitcount)
+            # print(selected_index)
+            # print(hits[selected_index]['previewURL'])
+            return hits[selected_index]['previewURL']
+        else:
+            # if no results found, return None so code can inspect for that.
+            return None
     else:
-        # if no results found, return None so code can inspect for that.
+        print ("Got other status_code, returning None for now: " + str(status))
         return None
-
 
 def save_image(imageurl):
     ''' takes a url as an argument and tries to save the image to a directory'''
@@ -64,6 +69,6 @@ def save_image(imageurl):
 
 # debugging
 if __name__ == "__main__":
-    img_url = get_image_url()
+    img_url = get_image_url("Thanksgiving")
     print(img_url)
     save_image(img_url)
