@@ -3,7 +3,7 @@ This will eventually hold code that returns a url to an image on Pixabay.
 '''
 import requests # http://docs.python-requests.org/en/master/
 import random
-import urllib.request, datetime
+import urllib, datetime
 from os.path import sep
 
 def get_image_url(search, pixabaykey=None):
