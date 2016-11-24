@@ -6,7 +6,7 @@ import random
 import urllib.request, datetime
 from os.path import sep
 
-def get_image_url(search_for="Thanksgiving", pixabaykey=None):
+def get_image_url(search, pixabaykey=None):
     '''
     Requests a bunch of images from Pixabay API and picks a random image from the results.
     :param search_for:
@@ -17,7 +17,7 @@ def get_image_url(search_for="Thanksgiving", pixabaykey=None):
     search_url = "https://pixabay.com/api"
     apiparms = {
         'key': pixabaykey,
-        'q': search_for
+        'q': search
     }
 
     # request data from Pixabay API
