@@ -11,13 +11,13 @@ import sys, os
 def index(request):
     # The `POST` has the data from the HTML form that was submitted.
     # ORM queries the database for all of the to-do entries.
+    if request.method == 'GET':
+        return render(request, 'PostcardApp/index.html')
+
+
+def result_page(request):
     if request.method == 'POST':
         search_keyword = request.POST.get('search')
-        Postcard_items = mod.objects.create(image=result(search_keyword)[0], wiki_sentence=result(search_keyword)[1], tweet_text=result(search_keyword)[2])
-        Postcard = mod.objects.all()
-        return render(request, 'PostcardApp/index.html', {'Postcard': Postcard})
-    elif request.method == 'GET':
-        search_keyword = request.GET.get('search')
         Postcard_items = mod.objects.create(image=result(search_keyword)[0], wiki_sentence=result(search_keyword)[1], tweet_text=result(search_keyword)[2])
         Postcard = mod.objects.all()
         return render(request, 'PostcardApp/index.html', {'Postcard': Postcard})
