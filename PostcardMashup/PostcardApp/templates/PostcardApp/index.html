@@ -27,8 +27,9 @@
       </div>
     <div id="Postcard">
         {% if Postcard %}
-            {{ Postcard.image }}<br/>
-            {{ Postcard.tweet_text }}<br/>
+            <b>Image URL:</b> {{ Postcard.image }}<br/>
+            <b>Tweet text:</b> {{ Postcard.tweet_text }}<br/>
+            <b>Wiki snippet:</b> {{ Postcard.wiki_sentence}}<br/>
         {% else %}
             No Postcard data found.
         {% endif %}

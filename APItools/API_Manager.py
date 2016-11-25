@@ -13,30 +13,36 @@ print_lock = threading.Lock()
 pixabaykey=''
 
 
-def get_image(search):
+def get_image(my_args):
+    search = my_args[0]
+    pm_data = my_args[1]
     image = get_image_url(search, pixabaykey)
     time.sleep(.5)  # pretend  do some work.
     with print_lock:
         print("I am the pic \n", image)
-        return image
+        pm_data['image'] = image
 
 
 
-def get_wiki_content(search):
+def get_wiki_content(my_args):
+    search = my_args[0]
+    pm_data = my_args[1]
     wiki_snippet = wikiapi.get_wiki_snippet(search)
     time.sleep(.5)  # pretend  do some work.
     with print_lock:
         print("I am the wiki snippet \n", wiki_snippet)
-        return wiki_snippet
+        pm_data['wiki'] = wiki_snippet
 
 
 
-def get_tweet(search):
+def get_tweet(my_args):
+    search = my_args[0]
+    pm_data = my_args[1]
     tweet = get_twitter(search)
     time.sleep(.5)  # pretend  do some work.
     with print_lock:
         print("I am the tweet: \n", tweet)
-        return tweet
+        pm_data['tweet'] = tweet
 
 
 
@@ -71,12 +77,16 @@ def threaded_search(search_for="Thanksgiving"):
     start = time.time()
     # list of random search string- can change it as per your choice
     search = [search_for]
-    q.put(search)
+    pm_data = {}
+    # thread_params = (search,dict)
+    q.put((search,pm_data))
 
     # wait until the thread terminates.
     q.join()
 
     print('Entire job took:', time.time() - start)
+
+    return pm_data
 
 
 

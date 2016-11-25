@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from . models import API_model as mod
-from APItools.API_Manager import get_image, get_tweet, get_wiki_content
+from APItools.API_Manager import get_image, get_tweet, get_wiki_content, threaded_search
 
 
 def index(request):
@@ -10,16 +10,19 @@ def index(request):
         return render(request, 'PostcardApp/index.html')
     elif request.method == 'POST':
             search_keyword = request.POST.get('search')
-            p_card_data = result(search_keyword)
-            Postcard_items = mod.objects.create(image=p_card_data[0],
-                                                wiki_sentence=p_card_data[1],
-                                                tweet_text=p_card_data[2].encode('utf-8')
+            # p_card_data = result(search_keyword)
+            p_card_data = threaded_search(search_keyword)
+            Postcard_items = mod.objects.create(image=p_card_data['image'],
+                                                wiki_sentence=p_card_data['wiki'],
+                                                tweet_text=p_card_data['tweet'].encode('utf-8') # encoding lets us cope with non-ascii text...
                                                 )
             Postcard = mod.objects.all()
-            return render(request, 'PostcardApp/index.html', {'Postcard': Postcard})
+            # TODO for some reason this is sending ALL postcards instead of just the one we're creating...
+            return render(request, 'PostcardApp/index.html', {'Postcard': Postcard_items})
 
 
 def result(search_keyword):
+    # TODO take advantage of threading in API_Manager via threaded_search
     Postcard_data = []
     Pixabay_Image = get_image(search_keyword)
     Wiki_snip = get_wiki_content(search_keyword)
