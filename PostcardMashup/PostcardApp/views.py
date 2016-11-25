@@ -10,9 +10,11 @@ def index(request):
         return render(request, 'PostcardApp/index.html')
     elif request.method == 'POST':
             search_keyword = request.POST.get('search')
-            Postcard_items = mod.objects.create(image=result(search_keyword)[0],
-                                                wiki_sentence=result(search_keyword)[1],
-                                                tweet_text=result(search_keyword)[2])
+            p_card_data = result(search_keyword)
+            Postcard_items = mod.objects.create(image=p_card_data[0],
+                                                wiki_sentence=p_card_data[1],
+                                                tweet_text=p_card_data[2].encode('utf-8')
+                                                )
             Postcard = mod.objects.all()
             return render(request, 'PostcardApp/index.html', {'Postcard': Postcard})
 
@@ -32,7 +34,7 @@ def result(search_keyword):
     else:
         Postcard_data.append("No wiki snippet found")
     if tweet_txt:
-        Postcard_data.append(tweet_txt)
+        Postcard_data.append(tweet_txt) # get a tweet
     else:
         Postcard_data.append("No tweet found")
 

@@ -25,5 +25,11 @@
 
         </form>
       </div>
+    <div id="Postcard">
+        {% if Postcard %}
+            {{ Postcard.image }}<br/>
+            {{ Postcard.tweet_text }}<br/>
+        {% endif %}
+    </div>
     </body>
 </html>

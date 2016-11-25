@@ -8,7 +8,7 @@ class API_model(models.Model):
     image = models.CharField(max_length=300, null=False)
     wiki_sentence = models.CharField(max_length=100, null=False, unique=True)
     tweet_text = models.CharField(max_length=100, null=False, unique=True)
-    Saved_n = models.DateTimeField(null=False, default=datetime.datetime)
+    Saved_n = models.DateTimeField(null=False, auto_now=True)#default=datetime.datetime)
 
 
 
