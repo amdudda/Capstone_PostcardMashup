@@ -53,29 +53,30 @@ def threader():
 
 q = Queue()
 
-# how many threads are we going to allow for
-for x in range(5):
-    image = threading.Thread(name='image-search', target=threader)
-    wiki = threading.Thread(name='wiki-snippet', target=threader)
-    tweet= threading.Thread(name='tweet-snippet', target=threader)
-    # classifying as a daemon, so they will die when the main dies
-    image.daemon = True
-    wiki.daemon = True
-    tweet.daemon = True
-    # begins, must come after daemon definition
-    image.start()
-    wiki.start()
-    tweet.start()
+def threaded_search(search_for="Thanksgiving"):
+    # how many threads are we going to allow for
+    for x in range(5):
+        image = threading.Thread(name='image-search', target=threader)
+        wiki = threading.Thread(name='wiki-snippet', target=threader)
+        tweet= threading.Thread(name='tweet-snippet', target=threader)
+        # classifying as a daemon, so they will die when the main dies
+        image.daemon = True
+        wiki.daemon = True
+        tweet.daemon = True
+        # begins, must come after daemon definition
+        image.start()
+        wiki.start()
+        tweet.start()
 
-start = time.time()
-# list of random search string- can change it as per your choice
-search = ['Thanksgiving']
-q.put(search)
+    start = time.time()
+    # list of random search string- can change it as per your choice
+    search = [search_for]
+    q.put(search)
 
-# wait until the thread terminates.
-q.join()
+    # wait until the thread terminates.
+    q.join()
 
-print('Entire job took:', time.time() - start)
+    print('Entire job took:', time.time() - start)
 
 
 
