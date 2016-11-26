@@ -10,17 +10,17 @@ def get_twitter(search_for="Thanksgiving"):
 
     api = tweepy.API(auth)
 
-
+    # TODO error handling
     results = api.search(q=search_for, count=1)
-
-
 
     # for result in results:
     #     print("\n ** Result: "+result.text)
+    if results:
+        return results[0].text
+    else: return None
 
-    return results[0].text
+# print(get_twitter())
 
-print(get_twitter())
 # # Get data from twitter api
 # class get_twitter(StreamListener):
 #
@@ -32,13 +32,14 @@ print(get_twitter())
 #         print("Could't find data. Status: "+status)
 #
 #
-# if __name__ == '__main__':
-#
-#     # Handling Twitter authetification and the connection to Twitter API
-#     t = get_twitter()
-#     auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-#     auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
-#     twitterstream = Stream(auth, get_twitter())
-#
-#     # Filtering Twitter with keyword 'Thanksgiving'
-#     twitterstream.filter(track=["Thanksgiving"])
+if __name__ == '__main__':
+    print(get_twitter("Thanksgiving"))
+
+    # Handling Twitter authetification and the connection to Twitter API
+    # t = get_twitter()
+    # auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    # auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+    # twitterstream = Stream(auth, get_twitter())
+    #
+    # # Filtering Twitter with keyword 'Thanksgiving'
+    # twitterstream.filter(track=["Thanksgiving"])
