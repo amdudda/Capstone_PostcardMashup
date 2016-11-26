@@ -19,6 +19,20 @@ def get_twitter(search_for="Thanksgiving"):
         return results[0].text
     else: return None
 
+
+def on_error(self, status_code):
+    print('Got an error with status code: ' + str(status_code))
+    return True  # To continue listening
+
+
+def on_timeout(self):
+    print('Timeout...')
+    return True  # To continue listening
+
+
+if __name__ == '__main__':
+    print(get_twitter('Thanksgiving'))
+
 # print(get_twitter())
 
 # # Get data from twitter api
@@ -32,8 +46,8 @@ def get_twitter(search_for="Thanksgiving"):
 #         print("Could't find data. Status: "+status)
 #
 #
-if __name__ == '__main__':
-    print(get_twitter("Thanksgiving"))
+# if __name__ == '__main__':
+#     print(get_twitter("Thanksgiving"))
 
     # Handling Twitter authetification and the connection to Twitter API
     # t = get_twitter()
