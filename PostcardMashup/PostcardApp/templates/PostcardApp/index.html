@@ -27,6 +27,7 @@
       </div>
     <div id="Postcard">
         {% if Postcard %}
+            <b>Search string:</b> <i>{{Postcard.search_string}}</i>
             <b>Image URL:</b> {{ Postcard.image }}<br/>
             <b>Tweet text:</b> {{ Postcard.tweet_text }}<br/>
             <b>Wiki snippet:</b> {{ Postcard.wiki_sentence}}<br/>

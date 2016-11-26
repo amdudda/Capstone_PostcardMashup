@@ -18,7 +18,8 @@ def index(request):
             if not p_card_data['image']: p_card_data['image'] = "/images/no_results.jpg"
             Postcard_items = mod.objects.create(image=p_card_data['image'],
                                                 wiki_sentence=p_card_data['wiki'].encode('utf-8'),
-                                                tweet_text=p_card_data['tweet'].encode('utf-8')
+                                                tweet_text=p_card_data['tweet'].encode('utf-8'),
+                                                search_string = search_keyword
                                                 )
             # Postcard = mod.objects.all()
             # return the newly-created postcard
