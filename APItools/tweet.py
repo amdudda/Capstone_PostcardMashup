@@ -1,8 +1,9 @@
 import tweepy
-from tweepy import OAuthHandler
-from tweepy import Stream
-from tweepy.streaming import StreamListener, json
 from APItools.APIkeys import twitter_keys
+# from tweepy import OAuthHandler
+# from tweepy import Stream
+# from tweepy.streaming import StreamListener, json
+
 
 def get_twitter(search_for="Thanksgiving"):
     auth = tweepy.OAuthHandler(twitter_keys['CONSUMER_KEY'], twitter_keys['CONSUMER_SECRET'])
@@ -13,10 +14,27 @@ def get_twitter(search_for="Thanksgiving"):
 
     results = api.search(q="Thanksgiving", count=1)
 
+    # For debugging
     # for result in results:
     #     print("\n ** Result: "+result.text)
 
     return results[0].text
+
+
+
+def on_error(self, status_code):
+    print('Got an error with status code: ' + str(status_code))
+    return True  # To continue listening
+
+
+def on_timeout(self):
+    print('Timeout...')
+    return True  # To continue listening
+
+
+
+if __name__ == '__main__':
+    print(get_twitter('Thanksgiving'))
 
 # print(get_twitter())
 
