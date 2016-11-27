@@ -18,16 +18,23 @@ image{
 
 }
 
+#Postcard{
+  top:350px;
+  left:50%;
+  position:absolute;
+}
 
 .postcard{
   width:800px;
   height:550px;
   background-color: white;
   transform:translate(-70%, -30%);
-  left:50%;
-  top:50%;
-  position:absolute;
+  /*left:50%;*/
+  /*top:50%;*/
+  overflow: hidden;
+  position:relative;
   padding:12px;
+  margin-bottom: 12px;
 }
 .stample{
   width:70px;
