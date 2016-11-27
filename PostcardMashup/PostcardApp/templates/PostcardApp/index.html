@@ -4,36 +4,59 @@
         <title>PostCard-MashUp</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/todo.css' %}">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="PostcardApp/static/Style.css" />
+        <link rel="stylesheet" href="{% static 'Style.css' %}">
     </head>
 
 
-    <body class="align">
+    <body>
       <div class="container">
-      <br />
-      <form class="search-keyword" action="/" method="post">
-        {% csrf_token %}
-      <label>Enter search keyword:</label><br />
-      <input type="text" class="tname" name="search" placeholder="search_keyword"><br /> <br />
-
-      <p></p>
-          <button type="submit" value=" " class="button"> Search </button>
-          <form class="search-keyword" action="/" method="post">
-
           <br />
-      <hr />
+          <form class="search-keyword" action="/" method="post">
+            {% csrf_token %}
+          <label>Enter search keyword:</label><br />
+          <input type="text" class="tname" name="search" placeholder="search_keyword"><br /> <br />
 
-        </form>
+          <p></p>
+              <button type="submit" value=" " class="button"> Search </button>
+              <form class="search-keyword" action="/" method="post">
+
+              <br />
+          <hr />
+
+            </form>
+
+        <!--<div id="Postcard">-->
+            <!--{% if Postcard %}-->
+                <!--<b>Search string:</b> <i>{{Postcard.search_string}}</i><br/>-->
+                <!--<b>Image URL:</b> {{ Postcard.image }}<br/>-->
+                <!--<b>Tweet text:</b> {{ Postcard.tweet_text }}<br/>-->
+                <!--<b>Wiki snippet:</b> {{ Postcard.wiki_sentence}}<br/>-->
+            <!--{% else %}-->
+                <!--No Postcard data found.-->
+            <!--{% endif %}-->
+        <!--</div>-->
+
+        <div id="Postcard" class="postcard">
+            {% if Postcard %}
+            <div class="result"></div>
+            <!--User the search keywork for the post card title -->
+            <h1 class="postcard_title">{{Postcard.search_string}}</h1>
+            <!--Add the wiki result to the left of the postcard as our main text-->
+            <div class="content-left">
+                <p><b>Wiki snippet:</b> {{ Postcard.wiki_sentence}}<br/></p>
+            </div>
+            <!---->
+            <div class="content-right">
+                <span class="adress-line"><b>Image URL:</b> {{ Postcard.image }}<br/></span>
+                <span class="adress-line"><b>Tweet text:</b> {{ Postcard.tweet_text }}<br/></span>
+
+                {% else %}
+                  <p>No Postcard data found.</p>
+                {% endif %}
+            </div>
+        </div>
       </div>
-    <div id="Postcard">
-        {% if Postcard %}
-            <b>Search string:</b> <i>{{Postcard.search_string}}</i><br/>
-            <b>Image URL:</b> {{ Postcard.image }}<br/>
-            <b>Tweet text:</b> {{ Postcard.tweet_text }}<br/>
-            <b>Wiki snippet:</b> {{ Postcard.wiki_sentence}}<br/>
-        {% else %}
-            No Postcard data found.
-        {% endif %}
-    </div>
     </body>
 </html>

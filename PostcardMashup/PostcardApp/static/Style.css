@@ -1,0 +1,53 @@
+html,
+body{
+  background-color: #171717;
+  margin:0;
+  padding:0;
+}
+label{
+    color: #FFFFFF;
+}
+button{
+  background-color: cornflowerblue;
+}
+
+.postcard{
+  width:800px;
+  height:550px;
+  background-color: white;
+  transform:translate(-70%, -30%);
+  left:50%;
+  top:50%;
+  position:absolute;
+  padding:12px;
+}
+.result{
+  width:70px;
+  height:70px;
+  position:absolute;
+  right: 20px;
+  border:1px solid black;
+}
+.postcard_title{
+  font-family:'Indie Flower';
+}
+/* Wiki contend */
+.content-left{
+  width:calc(60%);
+  font-family:'Indie Flower';
+  font-size:14px;
+  /* space between line*/
+  line-height:1.2;
+  float:left;
+}
+.content-right{
+  width:40%;
+  float:left;
+}
+
+.adress-line{
+  display:block;
+  margin: 10px 50px;
+  font-family:'Indie Flower';
+  border-bottom:1px solid black;
+}
