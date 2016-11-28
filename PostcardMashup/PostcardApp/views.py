@@ -7,7 +7,10 @@ def index(request):
     # The `POST` has the data from the HTML form that was submitted.
     # ORM queries the database for all of the to-do entries.
     if request.method == 'GET':
-        return render(request, 'PostcardApp/index.html')
+        five_newest = mod.objects.order_by("-Saved_n")[:5]
+        print(five_newest)
+        context = {'Postcards':five_newest}
+        return render(request, 'PostcardApp/index.html',context)
     elif request.method == 'POST':
             search_keyword = request.POST.get('search')
             # use threading to speed up searching
@@ -23,7 +26,7 @@ def index(request):
                                                 )
             # Postcard = mod.objects.all()
             # return the newly-created postcard
-            return render(request, 'PostcardApp/index.html', {'Postcard': Postcard_items})
+            return render(request, 'PostcardApp/index.html', {'Postcards': [Postcard_items,]})
 
 # AMD: I think my changes make this obsolete!  Now with threading!  :-D
 # def result(search_keyword):

@@ -1,40 +1,72 @@
 {% load staticfiles %}
 <html>
-    <head>
-        <title>PostCard-MashUp</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/todo.css' %}">
-    </head>
+<head>
+    <title>PostCard-MashUp</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="PostcardApp/static/Style.css"/>
+    <link rel="stylesheet" href="{% static 'Style.css' %}">
+</head>
 
 
-    <body class="align">
-      <div class="container">
-      <br />
-      <form class="search-keyword" action="/" method="post">
+<body>
+<div class="container">
+    <br/>
+    <form class="search-keyword" action="/" method="post">
         {% csrf_token %}
-      <label>Enter search keyword:</label><br />
-      <input type="text" class="tname" name="search" placeholder="search_keyword"><br /> <br />
+        <label>Enter search keyword:</label><br/>
+        <input type="text" class="tname" name="search" placeholder="search_keyword"><br/> <br/>
 
-      <p></p>
-          <button type="submit" value=" " class="button"> Search </button></form>
-          <form class="search-keyword" action="/" method="post">
+        <p></p>
+        <button type="submit" value=" " class="button"> Search</button>
+        <form class="search-keyword" action="/" method="post">
 
-          <br />
-      <hr />
+            <br/>
+            <hr/>
 
         </form>
-      </div>
 
-    <div id="Postcard">
-        {% if Postcard %}
-            <b>Search string:</b> <i>{{Postcard.search_string}}</i><br/>
-            <b>Image URL:</b> {{ Postcard.image }}<br/>
-            <b>Tweet text:</b> {{ Postcard.tweet_text }}<br/>
-            <b>Wiki snippet:</b> {{ Postcard.wiki_sentence}}<br/>
-        {% else %}
-            No Postcard data found.
+        <!--<div id="Postcard">-->
+        <!--{% if Postcard %}-->
+        <!--<b>Search string:</b> <i>{{Postcard.search_string}}</i><br/>-->
+        <!--<b>Image URL:</b> {{ Postcard.image }}<br/>-->
+        <!--<b>Tweet text:</b> {{ Postcard.tweet_text }}<br/>-->
+        <!--<b>Wiki snippet:</b> {{ Postcard.wiki_sentence}}<br/>-->
+        <!--{% else %}-->
+        <!--No Postcard data found.-->
+        <!--{% endif %}-->
+        <!--</div>-->
+
+        {% if Postcards %}
+            <div id="Postcard">
+            {% for Postcard in Postcards %}
+                <div id="Postcard_{{Postcard.id}}" class="postcard">
+                    <div class="stample"></div>
+                    <!--User the search keywork for the post card title -->
+                    <h1 class="postcard_title">{{Postcard.search_string}}</h1>
+                    <!--Add the wiki result to the left of the postcard as our main text-->
+                    <div class="content-left">
+                        <!--Wiki text-->
+                        <p><b>Wiki snippet:</b> {{ Postcard.wiki_sentence}}<br/></p>
+                        <!--Twitter message-->
+                        <hr/>
+                        <p>{{ Postcard.tweet_text }}<br/></p>
+                    </div>
+
+                    <div class="content-right">
+                        <!--Image from Pixabay-->
+                        <span class="adress-line"> <br/>Lorem Ipsum</span>
+                        <span class="adress-line"> <br/>2 Mayfair Ave. </span>
+                        <span class="adress-line"> <br/>Absecon, NJ 08205</span>
+                        <img src="{{ Postcard.image }}"><br/>
+
+                    </div>
+
+                </div>
+            {% endfor %}
+            </div>
         {% endif %}
-    </div>
-    </body>
+</div>
+</body>
 </html>
