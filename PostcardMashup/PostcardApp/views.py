@@ -19,6 +19,7 @@ def index(request):
             # TODO create a default image
             # encoding our data as utf-8 lets us cope with non-ascii text...
             if not p_card_data['image']: p_card_data['image'] = "/images/no_results.jpg"
+            if not p_card_data['tweet']: p_card_data['tweet'] = "No tweet found for '%s'."% search_keyword
             Postcard_items = mod.objects.create(image=p_card_data['image'],
                                                 wiki_sentence=p_card_data['wiki'].encode('utf-8'),
                                                 tweet_text=p_card_data['tweet'].encode('utf-8'),
