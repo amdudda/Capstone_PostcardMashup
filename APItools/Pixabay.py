@@ -31,7 +31,7 @@ def get_image_url(search, pixabaykey=None):
         hitcount = len(hits)
         if hitcount > 0 :
             # if data is returned, pick a random hit and return the image url found in the selected hit
-            selected_index = random.randint(0, hitcount)
+            selected_index = random.randint(0, hitcount-1)
             # print(selected_index)
             # print(hits[selected_index]['previewURL'])
             return hits[selected_index]['previewURL']

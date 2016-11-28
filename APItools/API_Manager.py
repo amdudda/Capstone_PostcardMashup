@@ -13,30 +13,36 @@ print_lock = threading.Lock()
 pixabaykey=''
 
 
-def get_image(search):
+def get_image(my_args):
+    search = my_args[0]
+    pm_data = my_args[1]
     image = get_image_url(search, pixabaykey)
     time.sleep(.5)  # pretend  do some work.
     with print_lock:
         print("I am the pic \n", image)
-        return image
+        pm_data['image'] = image
 
 
 
-def get_wiki_content(search):
+def get_wiki_content(my_args):
+    search = my_args[0]
+    pm_data = my_args[1]
     wiki_snippet = wikiapi.get_wiki_snippet(search)
     time.sleep(.5)  # pretend  do some work.
     with print_lock:
         print("I am the wiki snippet \n", wiki_snippet)
-        return wiki_snippet
+        pm_data['wiki'] = wiki_snippet
 
 
 
-def get_tweet(search):
+def get_tweet(my_args):
+    search = my_args[0]
+    pm_data = my_args[1]
     tweet = get_twitter(search)
     time.sleep(.5)  # pretend  do some work.
     with print_lock:
         print("I am the tweet: \n", tweet)
-        return tweet
+        pm_data['tweet'] = tweet
 
 
 
@@ -53,29 +59,34 @@ def threader():
 
 q = Queue()
 
-# how many threads are we going to allow for
-for x in range(5):
-    image = threading.Thread(name='image-search', target=threader)
-    wiki = threading.Thread(name='wiki-snippet', target=threader)
-    tweet= threading.Thread(name='tweet-snippet', target=threader)
-    # classifying as a daemon, so they will die when the main dies
-    image.daemon = True
-    wiki.daemon = True
-    tweet.daemon = True
-    # begins, must come after daemon definition
-    image.start()
-    wiki.start()
-    tweet.start()
+def threaded_search(search_for="Thanksgiving"):
+    # how many threads are we going to allow for
+    for x in range(5):
+        image = threading.Thread(name='image-search', target=threader)
+        wiki = threading.Thread(name='wiki-snippet', target=threader)
+        tweet= threading.Thread(name='tweet-snippet', target=threader)
+        # classifying as a daemon, so they will die when the main dies
+        image.daemon = True
+        wiki.daemon = True
+        tweet.daemon = True
+        # begins, must come after daemon definition
+        image.start()
+        wiki.start()
+        tweet.start()
 
-start = time.time()
-# list of random search string- can change it as per your choice
-search = ['Thanksgiving']
-q.put(search)
+    start = time.time()
+    # list of random search string- can change it as per your choice
+    search = [search_for]
+    pm_data = {}
+    # thread_params = (search,dict)
+    q.put((search,pm_data))
 
-# wait until the thread terminates.
-q.join()
+    # wait until the thread terminates.
+    q.join()
 
-print('Entire job took:', time.time() - start)
+    print('Entire job took:', time.time() - start)
+
+    return pm_data
 
 
 
