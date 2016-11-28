@@ -23,7 +23,6 @@ def get_image(my_args):
         pm_data['image'] = image
 
 
-
 def get_wiki_content(my_args):
     search = my_args[0]
     pm_data = my_args[1]
@@ -34,7 +33,6 @@ def get_wiki_content(my_args):
         pm_data['wiki'] = wiki_snippet
 
 
-
 def get_tweet(my_args):
     search = my_args[0]
     pm_data = my_args[1]
@@ -43,7 +41,6 @@ def get_tweet(my_args):
     with print_lock:
         print("I am the tweet: \n", tweet)
         pm_data['tweet'] = tweet
-
 
 
 def threader():
@@ -58,6 +55,7 @@ def threader():
         q.task_done()
 
 q = Queue()
+
 
 def threaded_search(search_for="Thanksgiving"):
     # how many threads are we going to allow for
@@ -79,13 +77,12 @@ def threaded_search(search_for="Thanksgiving"):
     search = [search_for]
     pm_data = {}
     # thread_params = (search,dict)
-    q.put((search,pm_data))
+    q.put((search, pm_data))
 
     # wait until the thread terminates.
     q.join()
 
     print('Entire job took:', time.time() - start)
-
     return pm_data
 
 
