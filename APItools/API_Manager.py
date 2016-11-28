@@ -19,7 +19,7 @@ def get_image(my_args):
     image = get_image_url(search, pixabaykey)
     time.sleep(.5)  # pretend  do some work.
     with print_lock:
-        print("I am the pic \n", image)
+        # print("I am the pic \n", image)
         pm_data['image'] = image
 
 
@@ -30,7 +30,7 @@ def get_wiki_content(my_args):
     wiki_snippet = wikiapi.get_wiki_snippet(search)
     time.sleep(.5)  # pretend  do some work.
     with print_lock:
-        print("I am the wiki snippet \n", wiki_snippet)
+        # print("I am the wiki snippet \n", wiki_snippet)
         pm_data['wiki'] = wiki_snippet
 
 
@@ -41,7 +41,7 @@ def get_tweet(my_args):
     tweet = get_twitter(search)
     time.sleep(.5)  # pretend  do some work.
     with print_lock:
-        print("I am the tweet: \n", tweet)
+        # print("I am the tweet: \n", tweet)
         pm_data['tweet'] = tweet
 
 
