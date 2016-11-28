@@ -42,9 +42,10 @@
             <div id="Postcard">
             {% for Postcard in Postcards %}
                 <div id="Postcard_{{Postcard.id}}" class="postcard">
-                    <div class="stample"></div>
                     <!--User the search keywork for the post card title -->
                     <h1 class="postcard_title">{{Postcard.search_string}}</h1>
+                    <img src="{{ Postcard.image }}">
+                    <div class="stample"></div>
                     <!--Add the wiki result to the left of the postcard as our main text-->
                     <div class="content-left">
                         <!--Wiki text-->
@@ -59,7 +60,7 @@
                         <span class="adress-line"> <br/>Lorem Ipsum</span>
                         <span class="adress-line"> <br/>2 Mayfair Ave. </span>
                         <span class="adress-line"> <br/>Absecon, NJ 08205</span>
-                        <img src="{{ Postcard.image }}"><br/>
+                        <br/>
 
                     </div>
 
