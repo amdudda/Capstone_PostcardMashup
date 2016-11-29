@@ -15,8 +15,9 @@ img{
   display:block;
   /*margin: 10px 30px;*/
   /*border-bottom:1px solid black;*/
-  height:550px;
-  width:800px;
+  height:520px;
+  width:700px;
+  padding-left: 17px;
 }
 
 #Postcard{
@@ -47,6 +48,10 @@ img{
 .postcard_title{
   font-family:'Indie Flower';
   position:absolute;
+  background-color: white;
+  padding-left: 17px;
+  board-radius: 20x;
+  padding: 20px;
 }
 /* Wiki contend */
 .content-left{
@@ -56,6 +61,7 @@ img{
   /* space between line*/
   line-height:1.2;
   float:left;
+  padding-left: 17px;
 }
 .content-right{
   width:40%;
