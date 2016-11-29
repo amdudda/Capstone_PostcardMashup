@@ -37,6 +37,7 @@ img{
   position:relative;
   padding:12px;
   margin-bottom: 12px;
+  margin-left: 25px;
 }
 .stample{
   width:70px;
@@ -61,7 +62,9 @@ img{
   /* space between line*/
   line-height:1.2;
   float:left;
-  padding-left: 17px;
+  margin: 20px;
+  padding: 10px;
+  padding-left-alt: 20px;
 }
 .content-right{
   width:40%;
