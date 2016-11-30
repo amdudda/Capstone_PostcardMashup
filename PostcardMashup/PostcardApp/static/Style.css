@@ -11,11 +11,13 @@ button{
   background-color: cornflowerblue;
 }
 
-image{
+img{
   display:block;
-  margin: 10px 30px;
-  border-bottom:1px solid black;
-
+  /*margin: 10px 30px;*/
+  /*border-bottom:1px solid black;*/
+  height:520px;
+  width:700px;
+  padding-left: 17px;
 }
 
 #Postcard{
@@ -35,6 +37,7 @@ image{
   position:relative;
   padding:12px;
   margin-bottom: 12px;
+  margin-left: 25px;
 }
 .stample{
   width:70px;
@@ -45,6 +48,11 @@ image{
 }
 .postcard_title{
   font-family:'Indie Flower';
+  position:absolute;
+  background-color: white;
+  padding-left: 17px;
+  board-radius: 20x;
+  padding: 20px;
 }
 /* Wiki contend */
 .content-left{
@@ -54,6 +62,9 @@ image{
   /* space between line*/
   line-height:1.2;
   float:left;
+  margin: 20px;
+  padding: 10px;
+  padding-left-alt: 20px;
 }
 .content-right{
   width:40%;

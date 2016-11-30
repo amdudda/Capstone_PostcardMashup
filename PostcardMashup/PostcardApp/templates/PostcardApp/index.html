@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="PostcardApp/static/Style.css"/>
-    <link rel="stylesheet" href="{% static 'Style.css' %}">
+    <link rel="stylesheet" href="../static/Style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../static/jquery.flip.js"></script>
 </head>
 
 
@@ -41,12 +43,16 @@
         {% if Postcards %}
             <div id="Postcard">
             {% for Postcard in Postcards %}
-                <div id="Postcard_{{Postcard.id}}" class="postcard">
-                    <div class="stample"></div>
+                <div id="Postcard_{{Postcard.id}}" class="postcard ">
+                    <div class="front">
                     <!--User the search keywork for the post card title -->
                     <h1 class="postcard_title">{{Postcard.search_string}}</h1>
+                    <img src="{{ Postcard.image }}">
+                    <div class="stample"></div>
+                    </div>
                     <!--Add the wiki result to the left of the postcard as our main text-->
-                    <div class="content-left">
+                    <div class=" back ">
+
                         <!--Wiki text-->
                         <p><b>Wiki snippet:</b> {{ Postcard.wiki_sentence}}<br/></p>
                         <!--Twitter message-->
@@ -54,19 +60,26 @@
                         <p>{{ Postcard.tweet_text }}<br/></p>
                     </div>
 
-                    <div class="content-right">
-                        <!--Image from Pixabay-->
-                        <span class="adress-line"> <br/>Lorem Ipsum</span>
-                        <span class="adress-line"> <br/>2 Mayfair Ave. </span>
-                        <span class="adress-line"> <br/>Absecon, NJ 08205</span>
-                        <img src="{{ Postcard.image }}"><br/>
+                    <!--<div class="content-right">-->
+                        <!--&lt;!&ndash;Image from Pixabay&ndash;&gt;-->
+                        <!--<span class="adress-line"> <br/>Lorem Ipsum</span>-->
+                        <!--<span class="adress-line"> <br/>2 Mayfair Ave. </span>-->
+                        <!--<span class="adress-line"> <br/>Absecon, NJ 08205</span>-->
+                        <!--<br/>-->
 
-                    </div>
+                    <!--</div>-->
 
                 </div>
             {% endfor %}
             </div>
         {% endif %}
+        </form>
 </div>
+<script type="text/javascript">
+    $(function ($) {
+        $(".postcard").flip({tiggle:'hover'})
+
+    })
+</script>
 </body>
 </html>
