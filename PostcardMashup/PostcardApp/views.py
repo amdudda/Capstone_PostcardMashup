@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from . models import API_model as mod
-from APItools.API_Manager import get_image, get_tweet, get_wiki_content, threaded_search
+from APItools.API_Manager import threaded_search
 
 
 def index(request):
@@ -10,7 +10,7 @@ def index(request):
         five_newest = mod.objects.order_by("-Saved_n")[:5]
         print(five_newest)
         context = {'Postcards':five_newest}
-        return render(request, 'PostcardApp/index.html',context)
+        return render(request, 'PostcardApp/index.html', context)
     elif request.method == 'POST':
             search_keyword = request.POST.get('search')
             # use threading to speed up searching
@@ -25,9 +25,10 @@ def index(request):
                                                 tweet_text=p_card_data['tweet'].encode('utf-8'),
                                                 search_string = search_keyword
                                                 )
-            # Postcard = mod.objects.all()
+            # font = ImageFont.truetype("/usr/share/fonts/dejavu/DejaVuSans.ttf", 25)
             # return the newly-created postcard
             return render(request, 'PostcardApp/index.html', {'Postcards': [Postcard_items,]})
+
 
 # AMD: I think my changes make this obsolete!  Now with threading!  :-D
 # def result(search_keyword):

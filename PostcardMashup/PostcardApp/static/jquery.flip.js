@@ -301,6 +301,8 @@
 
         faces.css({
           transition: "none"
+
+
         });
 
         // This sets up the first flip in the new direction automatically
