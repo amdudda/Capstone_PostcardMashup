@@ -65,10 +65,22 @@ img{
   margin: 20px;
   padding: 10px;
   padding-left-alt: 20px;
+  overflow: hidden;
 }
 .content-right{
   width:40%;
-  float:right;
+  position: absolute;
+  /*float:right;*/
+  top: 250px;
+  left: 500px;
+}
+
+.centerline{
+  position:absolute;
+  height: 450px;
+  border-left: solid black 1px;
+  top: 50px;
+  left: 500px;
 }
 
 .adress-line{
