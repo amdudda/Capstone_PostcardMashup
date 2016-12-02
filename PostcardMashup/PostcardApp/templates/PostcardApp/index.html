@@ -13,6 +13,14 @@
 
 
 <body>
+<aside>
+{% if keywords %}
+    {% for k in keywords %}
+        <a href="/keyword/{{k.search_string}}/">{{k.search_string}}</a><br/>
+    {% endfor %}
+{% endif %}
+</aside>
+
 <div class="container">
     <div id="heading">
     <h1>Postcard Mashups!</h1>

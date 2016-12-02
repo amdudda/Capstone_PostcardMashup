@@ -5,6 +5,13 @@ body{
   padding:0;
 }
 
+aside{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100px;
+}
+
 #heading{
   height: 100px;
   border-bottom: solid white 1px;

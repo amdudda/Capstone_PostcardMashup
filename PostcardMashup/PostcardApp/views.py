@@ -6,10 +6,11 @@ from APItools.API_Manager import threaded_search
 def index(request):
     # The `POST` has the data from the HTML form that was submitted.
     # ORM queries the database for all of the to-do entries.
+    unique_keywords = mod.objects.values('search_string').distinct()
     if request.method == 'GET':
         five_newest = mod.objects.order_by("-Saved_n")[:5]
         # print(five_newest)
-        context = {'Postcards':five_newest}
+        context = {'Postcards':five_newest,'keywords':unique_keywords}
         return render(request, 'PostcardApp/index.html', context)
     elif request.method == 'POST':
             search_keyword = request.POST.get('search')
@@ -27,13 +28,16 @@ def index(request):
                                                 )
             # font = ImageFont.truetype("/usr/share/fonts/dejavu/DejaVuSans.ttf", 25)
             # return the newly-created postcard
-            return render(request, 'PostcardApp/index.html', {'Postcards': [Postcard_items,]})
+            context = {'Postcards': [Postcard_items,], 'keywords': unique_keywords}
+            return render(request, 'PostcardApp/index.html', context)
 
 def keyword(request,sk):
     # get all postcards that match the search term
     print("sk is: " + sk)
     Postcard_items = mod.objects.filter(search_string=sk)
-    context = {'Postcards': Postcard_items}
+
+    unique_keywords = mod.objects.values('search_string').distinct()
+    context = {'Postcards': Postcard_items, 'keywords':unique_keywords}
 
     # then pass them to index to render them
     return render(request,'PostcardApp/index.html', context)
