@@ -14,20 +14,19 @@
 
 <body>
 <div class="container">
-    <br/>
-    <form class="search-keyword" action="/" method="post">
-        {% csrf_token %}
-        <label>Enter search keyword:</label><br/>
-        <input type="text" class="tname" name="search" placeholder="search_keyword"><br/> <br/>
-
-        <p></p>
-        <button type="submit" value=" " class="button"> Search</button>
+    <div id="heading">
+    <h1>Postcard Mashups!</h1>
+    <div id="searchform">
         <form class="search-keyword" action="/" method="post">
-
-            <br/>
-            <hr/>
-
+            {% csrf_token %}
+            <label>Create your own Postcard Mashup!  Enter a search keyword:</label><br/>
+            <input type="text" class="tname" name="search" placeholder="search_keyword">
+            <button type="submit" value=" " class="button"> Search</button><br/>
+            <label>Or <a href="/">see the five newest postcards</a>!</label>
         </form>
+    </div>
+    </div>
+
         {% if Postcards %}
             <div id="Postcard">
             {% for Postcard in Postcards %}
