@@ -8,7 +8,7 @@ def index(request):
     # ORM queries the database for all of the to-do entries.
     if request.method == 'GET':
         five_newest = mod.objects.order_by("-Saved_n")[:5]
-        print(five_newest)
+        # print(five_newest)
         context = {'Postcards':five_newest}
         return render(request, 'PostcardApp/index.html', context)
     elif request.method == 'POST':
