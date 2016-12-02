@@ -28,18 +28,6 @@
             <hr/>
 
         </form>
-
-        <!--<div id="Postcard">-->
-        <!--{% if Postcard %}-->
-        <!--<b>Search string:</b> <i>{{Postcard.search_string}}</i><br/>-->
-        <!--<b>Image URL:</b> {{ Postcard.image }}<br/>-->
-        <!--<b>Tweet text:</b> {{ Postcard.tweet_text }}<br/>-->
-        <!--<b>Wiki snippet:</b> {{ Postcard.wiki_sentence}}<br/>-->
-        <!--{% else %}-->
-        <!--No Postcard data found.-->
-        <!--{% endif %}-->
-        <!--</div>-->
-
         {% if Postcards %}
             <div id="Postcard">
             {% for Postcard in Postcards %}
@@ -49,8 +37,12 @@
                     <h1 class="postcard_title">{{Postcard.search_string}}</h1>
                     <!--Image from Pixabay-->
                     <img src="{{ Postcard.image }}">
+                        <audio  id ="PlayaBle"class="audioDemo" src="/static/Less Than 30 Seconds Of Music!.mp3"
+                                controls="controls">
+                            </audio>
+                        <!--hidden="Y" autoplay="Y"-->
                     </div>
-                    <!--Add the wiki result to the left of the postcard as our main text-->
+                    <!--Add the wiki result to the left of the postcard as our main /Users/chitrakakkar/Desktoptext-->
                     <div class=" back ">
                         <div><img class="stamp" src="../../static/image/postcard-stamp.jpg"/></div>
                             <!--Twitter message-->
@@ -79,11 +71,20 @@
         </form>
 </div>
 <script type="text/javascript">
-    $(function ($) {
-        $(".postcard").flip({tiggle:'hover', speed:5000})
-
-
+    $(function ($)
+    {
+        $(".postcard").flip({tiggle: 'hover', speed: 15000})
     })
+  $(".audioDemo").ready(function()
+  {
+        $('#PlayaBle').click(function()
+        {
+             $(".audioDemo").trigger('play');
+        });
+
+    });
+
+
 </script>
 </body>
 </html>
