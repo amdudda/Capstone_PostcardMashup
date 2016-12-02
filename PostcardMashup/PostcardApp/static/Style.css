@@ -11,7 +11,7 @@ button{
   background-color: cornflowerblue;
 }
 
-img{
+img:not(.stamp){
   display:block;
   /*margin: 10px 30px;*/
   /*border-bottom:1px solid black;*/
@@ -39,15 +39,16 @@ img{
   margin-bottom: 12px;
   margin-left: 25px;
 }
-.stample{
-  width:70px;
-  height:70px;
+.stamp{
+  width:80px;
+  height:80px;
   position:absolute;
-  right: 20px;
+  right: 12px;
   border:1px solid black;
 }
 .postcard_title{
-  font-family:'Indie Flower';
+  font-family:'Aref Ruqaa';
+  font-size: 40px;
   position:absolute;
   background-color: white;
   padding-left: 17px;
@@ -88,4 +89,9 @@ img{
   margin: 10px 30px;
   font-family:'Indie Flower';
   border-bottom:1px solid black;
+  font-size: 20px;
+}
+
+.tweet{
+  font-family:'Indie Flower';
 }

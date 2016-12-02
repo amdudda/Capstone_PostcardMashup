@@ -4,8 +4,8 @@
     <title>PostCard-MashUp</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="PostcardApp/static/Style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa|Indie+Flower" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/Style.css"/>
     <link rel="stylesheet" href="../static/Style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="../static/jquery.flip.js"></script>
@@ -47,19 +47,19 @@
                     <div class="front">
                     <!--User the search keywork for the post card title -->
                     <h1 class="postcard_title">{{Postcard.search_string}}</h1>
-
                     <!--Image from Pixabay-->
                     <img src="{{ Postcard.image }}">
                     </div>
                     <!--Add the wiki result to the left of the postcard as our main text-->
                     <div class=" back ">
-                        <div class="stample"></div>
-                        <!--Wiki text-->
-                        <div class="content-left">
-                            <p><b>Wiki snippet:</b> {{ Postcard.wiki_sentence}}<br/></p>
+                        <div><img class="stamp" src="../../static/image/postcard-stamp.jpg"/></div>
                             <!--Twitter message-->
-                            <hr/>
-                            <p>{{ Postcard.tweet_text }}<br/></p>
+                            <p class="tweet">{{ Postcard.tweet_text }}<br/></p>
+                        <div class="content-left">
+
+                            <!--Wiki text-->
+                            <p><b>Wiki snippet:</b>{{ Postcard.wiki_sentence}}<br/></p>
+
                         </div>
                         <div class="centerline"></div>
                         <div class="content-right">
@@ -67,8 +67,7 @@
                             <span class="adress-line"> <br/>2 Mayfair Ave. </span>
                             <span class="adress-line"> <br/>Absecon, NJ 08205</span>
                         <br/>
-
-                    </div>
+                        </div>
                     </div>
 
 
