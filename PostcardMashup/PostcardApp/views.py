@@ -6,7 +6,7 @@ from APItools.API_Manager import threaded_search
 def index(request):
     # The `POST` has the data from the HTML form that was submitted.
     # ORM queries the database for all of the to-do entries.
-    unique_keywords = mod.objects.values('search_string').distinct()
+    unique_keywords = mod.objects.values('search_string').distinct()[:25]
     if request.method == 'GET':
         five_newest = mod.objects.order_by("-Saved_n")[:5]
         # print(five_newest)
@@ -36,7 +36,7 @@ def keyword(request,sk):
     print("sk is: " + sk)
     Postcard_items = mod.objects.filter(search_string=sk)
 
-    unique_keywords = mod.objects.values('search_string').distinct()
+    unique_keywords = mod.objects.values('search_string').distinct()[:25]
     context = {'Postcards': Postcard_items, 'keywords':unique_keywords}
 
     # then pass them to index to render them
