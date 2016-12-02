@@ -19,6 +19,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^keyword/(?P<sk>[A-Za-z0-9 ]+)',include('PostcardApp.urls')),
     url(r'', include('PostcardApp.urls')),
 
 ]
