@@ -48,6 +48,7 @@ img:not(.stamp){
   top:350px;
   left:50%;
   position:absolute;
+  padding-left: 90px;
 }
 
 .postcard{
