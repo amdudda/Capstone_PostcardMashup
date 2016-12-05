@@ -15,3 +15,4 @@ The data needed to build each postcard are saved to a sqlite3 database so the va
 
 * Audio playback is dependent on the particular combination of OS and browser in use by the end user.  (MP3 vs OGG format is one we know about for sure.)  Future sprints would attempt to tailor file format to the user's OS+browser combination.
 * The URLs returned by pixabay are short-lived addresses and those images may not be retrievable via URL after a few days.  Future sprints would download and store the images and save the filename in the database.
+* Diagnose and fix the issues with CSS - we get different results across different computers and across different browsers in the same computer.
