@@ -28,7 +28,7 @@
         <form class="search-keyword" action="/" method="post">
             {% csrf_token %}
             <label>Create your own Postcard Mashup!  Enter a search keyword:</label><br/>
-            <input type="text" class="tname" name="search" placeholder="search_keyword">
+            <input type="text" class="tname" name="search" placeholder="search_keyword" required>
             <button type="submit" value=" " class="button"> Search</button><br/>
             <label>Or <a href="/">see the five newest postcards</a>!</label>
         </form>
