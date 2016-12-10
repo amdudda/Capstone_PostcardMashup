@@ -120,3 +120,7 @@ img:not(.stamp){
 .tweet{
   font-family:'Indie Flower';
 }
+
+.back {
+  background-color: white;
+}
